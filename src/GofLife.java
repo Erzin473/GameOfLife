@@ -7,22 +7,22 @@ import java.util.Random;
 public class GofLife extends JFrame{
 
     int size = 50;
-    boolean cellsMap[][];
+    boolean cellsLife[][];
     JButton cells[][];
 
     public GofLife(){
         Random rnd = new Random();
 
-        cellsMap = new boolean[size][size];
+        cellsLife = new boolean[size][size];
         cells = new JButton[size][size];
         setSize(1000,1000);
         setLayout(new GridLayout(size,size));
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < 50 ; j++) {
-                cellsMap[i][j] = rnd.nextInt(100)<30;
+                cellsLife[i][j] = rnd.nextInt(100)<30;
                 JButton temp = new JButton();
-                if(cellsMap[i][j])
+                if(cellsLife[i][j])
                     temp.setBackground(Color.GREEN);
                 else
                     temp.setBackground(Color.BLACK);
@@ -43,7 +43,7 @@ public class GofLife extends JFrame{
                 for (int i = 0; i < size; i++) {
                     for (int j = 0; j < 50; j++) {
                         int count =  countNeighbours(i,j);
-                        if (cellsMap[i][j]){
+                        if (cellsLife[i][j]){
                             if (count<2)
                                 temp[i][j] = false;
                                 if (count ==3 || count ==2)
@@ -56,11 +56,11 @@ public class GofLife extends JFrame{
                         }
                     }
                 }
-                cellsMap = temp;
+                cellsLife = temp;
 
                 for (int i = 0; i <size ; i++) {
                     for (int j = 0; j <50 ; j++) {
-                        if (cellsMap[i][j]){
+                        if (cellsLife[i][j]){
                             cells[i][j].setBackground(Color.GREEN);
                         }else
                             cells[i][j].setBackground(Color.BLACK);
@@ -78,7 +78,7 @@ public class GofLife extends JFrame{
             for (int j = y-1; j <= y+1 ; j++) {
 
                 try {
-                    if (cellsMap[i][j])
+                    if (cellsLife[i][j])
                         count++;
 
                 }catch (Exception e){
@@ -86,7 +86,7 @@ public class GofLife extends JFrame{
                 }
             }
         }
-        if (cellsMap[x][y])
+        if (cellsLife[x][y])
             count--;
         return count;
     }
