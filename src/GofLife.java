@@ -13,10 +13,9 @@ public class GofLife extends JFrame{
     public GofLife(){
         Random rnd = new Random();
 
-
         cellsMap = new boolean[size][size];
         cells = new JButton[size][size];
-        setSize(500,500);
+        setSize(1000,1000);
         setLayout(new GridLayout(size,size));
 
         for (int i = 0; i < size; i++) {
@@ -29,10 +28,9 @@ public class GofLife extends JFrame{
                     temp.setBackground(Color.WHITE);
                     add(temp);
                     cells[i][j] = temp;
-
             }
         }
-        
+
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -44,7 +42,7 @@ public class GofLife extends JFrame{
 
                 for (int i = 0; i < size; i++) {
                     for (int j = 0; j < 50; j++) {
-                        int count =  countNeigbours(i,j);
+                        int count =  countNeighbours(i,j);
                         if (cellsMap[i][j]){
                             if (count<2)
                                 temp[i][j] = false;
@@ -73,7 +71,7 @@ public class GofLife extends JFrame{
         timer.start();
     }
 
-    int countNeigbours(int x, int y){
+    int countNeighbours(int x, int y){
         int count = 0;
 
         for (int i = x-1; i <= x+1 ; i++) {
