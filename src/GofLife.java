@@ -23,9 +23,9 @@ public class GofLife extends JFrame{
                 cellsMap[i][j] = rnd.nextInt(100)<30;
                 JButton temp = new JButton();
                 if(cellsMap[i][j])
-                    temp.setBackground(Color.BLACK);
+                    temp.setBackground(Color.GREEN);
                 else
-                    temp.setBackground(Color.WHITE);
+                    temp.setBackground(Color.BLACK);
                     add(temp);
                     cells[i][j] = temp;
             }
@@ -61,9 +61,9 @@ public class GofLife extends JFrame{
                 for (int i = 0; i <size ; i++) {
                     for (int j = 0; j <50 ; j++) {
                         if (cellsMap[i][j]){
-                            cells[i][j].setBackground(Color.BLACK);
+                            cells[i][j].setBackground(Color.GREEN);
                         }else
-                            cells[i][j].setBackground(Color.WHITE);
+                            cells[i][j].setBackground(Color.BLACK);
                     }
                 }
             }
