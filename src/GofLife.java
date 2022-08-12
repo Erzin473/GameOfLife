@@ -9,6 +9,8 @@ public class GofLife extends JFrame{
     int size = 50;
     boolean cellsLife[][];
     JButton cells[][];
+    private Timer timer;
+    JButton btn;
 
     public GofLife(){
         Random rnd = new Random();
@@ -34,7 +36,8 @@ public class GofLife extends JFrame{
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        Timer timer = new Timer(100, new ActionListener() {
+
+        timer = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -68,8 +71,22 @@ public class GofLife extends JFrame{
                 }
             }
         });
-        timer.start();
+
+        btn = new JButton("Go");
+        add(btn);
+        btn.setFont(new Font("Comic Sans",Font.BOLD,25));
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == btn){
+                    timer.start();
+                }
+            }
+        });
+
+
     }
+
 
     int countNeighbours(int x, int y){
         int count = 0;
